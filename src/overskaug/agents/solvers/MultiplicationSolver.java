@@ -1,11 +1,11 @@
-package overskaug.solvers;
+package overskaug.agents.solvers;
 
-import overskaug.tree.TreeNode;
+import overskaug.tree.Task;
 
 public class MultiplicationSolver implements ArithmeticSolver {
 
     @Override
-    public double solve(TreeNode task) throws UnsupportedArithmeticOperation {
+    public double solve(Task task) throws UnsupportedArithmeticOperation {
         if (task.getValue().equals('*')) {
             double operand1 = Double.parseDouble(task.getLeftChild().getValue());
             double operand2 = Double.parseDouble(task.getRightChild().getValue());

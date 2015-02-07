@@ -2,18 +2,18 @@ package overskaug.tree;
 
 import java.util.List;
 
-public class TreeNode {
+public class Task {
     private String value;
-    private TreeNode leftChild = null;
-    private TreeNode rightChild = null;
+    private Task leftChild = null;
+    private Task rightChild = null;
 
-    public TreeNode(String value, TreeNode left, TreeNode right) {
+    public Task(String value, Task left, Task right) {
         this.value = value;
         this.leftChild = left;
         this.rightChild = right;
     }
 
-    public TreeNode(String value) {
+    public Task(String value) {
         this.value = value;
     }
 
@@ -25,23 +25,23 @@ public class TreeNode {
         this.value = value;
     }
 
-    public TreeNode getLeftChild() {
+    public Task getLeftChild() {
         return leftChild;
     }
 
-    public void setLeftChild(TreeNode leftChild) {
+    public void setLeftChild(Task leftChild) {
         this.leftChild = leftChild;
     }
 
-    public TreeNode getRightChild() {
+    public Task getRightChild() {
         return rightChild;
     }
 
-    public void setRightChild(TreeNode rightChild) {
+    public void setRightChild(Task rightChild) {
         this.rightChild = rightChild;
     }
 
-    public static TreeNode parsePrefix(List<String> expression) {
+    public static Task parsePrefix(List<String> expression) {
         String element = null;
         try {
             element = expression.get(0);
@@ -50,11 +50,11 @@ public class TreeNode {
         }
         expression.remove(0);
         if (isNumeric(element)) {
-            return new TreeNode(element);
+            return new Task(element);
         }
-        TreeNode left = parsePrefix(expression);
-        TreeNode right = parsePrefix(expression);
-        return new TreeNode(element, left, right);
+        Task left = parsePrefix(expression);
+        Task right = parsePrefix(expression);
+        return new Task(element, left, right);
     }
 
     public static boolean isNumeric(String element) {

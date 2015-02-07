@@ -1,4 +1,4 @@
-package overskaug.solvers;
+package overskaug.agents.solvers;
 
 public class UnsupportedArithmeticOperation extends Exception {
 
