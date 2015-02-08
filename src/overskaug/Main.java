@@ -11,7 +11,6 @@ public class Main {
         String task = "+ * 5 2 - 7 + 10 3";
         Task root = Task.parsePrefix(convertExpressionToList(task));
         ArrayList<Task> stuff = findSolvableTasks(root);
-        System.out.println("TOE");
     }
 
     public static ArrayList<String> convertExpressionToList(String expression) {

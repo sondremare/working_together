@@ -12,22 +12,27 @@ public class AdditionAgent extends Agent {
 
     ArrayList<ArithmeticSolver> solvers = new ArrayList<ArithmeticSolver>();
 
-    public void AdditionAgent() {
+    public void initSolvers() {
         AdditionSolver additionSolver = new AdditionSolver();
         solvers.add(additionSolver);
     }
 
     protected void setup() {
-        DFAgentDescription dfAgentDescription = new DFAgentDescription();
-        dfAgentDescription.setName(getAID());
-        ServiceDescription serviceDescription = new ServiceDescription();
-        serviceDescription.setType(getClass().getName());
-        serviceDescription.setName(getClass().getName());
-        dfAgentDescription.addServices(serviceDescription);
-        try {
-            DFService.register(this, dfAgentDescription);
-        } catch (FIPAException e) {
-            e.printStackTrace();
+        initSolvers();
+        for (ArithmeticSolver solver : solvers) {
+            DFAgentDescription dfAgentDescription = new DFAgentDescription();
+            dfAgentDescription.setName(getAID());
+            ServiceDescription serviceDescription = new ServiceDescription();
+            serviceDescription.setType(solver.getClass().getSimpleName());
+            System.out.println(serviceDescription.getType());
+            serviceDescription.setName(getClass().getName());
+            dfAgentDescription.addServices(serviceDescription);
+            try {
+                System.out.println("Registered");
+                DFService.register(this, dfAgentDescription);
+            } catch (FIPAException e) {
+                e.printStackTrace();
+            }
         }
 
         //addBehaviour();
@@ -39,7 +44,7 @@ public class AdditionAgent extends Agent {
         } catch (FIPAException e) {
             e.printStackTrace();
         }
-        System.out.println("AdditionAgent "+getAID().getName()+" terminating");
+        System.out.println(getClass().getName()+" "+getAID().getName()+" terminating");
     }
 
 }

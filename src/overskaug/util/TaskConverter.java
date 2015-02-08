@@ -1,4 +1,4 @@
-package overskaug.converter;
+package overskaug.util;
 
 import overskaug.tree.Task;
 
@@ -13,5 +13,18 @@ public class TaskConverter {
 
     public static String stringify(Task task) {
         return task.getValue() + " " + task.getLeftChild().getValue() + " " +task.getRightChild().getValue();
+    }
+
+    public static String getType(Task task) {
+        if (task.getValue().equals("+")) {
+            return "AdditionSolver";
+        } else if (task.getValue().equals("-")) {
+            return "SubtractionSolver";
+        } else if (task.getValue().equals("*")) {
+            return "MultiplicationSolver";
+        } else if (task.getValue().equals("/")) {
+            return "DivisionSolver";
+        }
+        return null;
     }
 }
