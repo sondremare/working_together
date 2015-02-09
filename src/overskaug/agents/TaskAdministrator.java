@@ -11,10 +11,8 @@ import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import overskaug.tree.Task;
-import overskaug.util.TaskConverter;
-
+import overskaug.util.TaskUtils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class TaskAdministrator extends Agent {
@@ -24,58 +22,33 @@ public class TaskAdministrator extends Agent {
     private ArrayList<Task> tasksToSolve;
     private ArrayList<Task> designatedTasks = new ArrayList<Task>();
     private Task rootNode;
+    private ACLMessage taskReceived;
 
     protected void setup() {
         System.out.println("Task administrator "+getAID().getName()+" is ready.");
-
-        Object[] args = getArguments();
-        if (args != null && args.length > 0) {
-            expressionToSolve = (String) args[0];
-            System.out.println("Trying to solve: "+expressionToSolve);
-            rootNode = Task.parsePrefix(convertExpressionToList(expressionToSolve));
-            tasksToSolve = findSolvableTask(rootNode);
-            while (tasksToSolve.size() > 0) {
-                System.out.println("Top TasksToSolve: "+TaskConverter.stringify(tasksToSolve.get(0)));
-                addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(0)));
-                designatedTasks.add(tasksToSolve.get(0));
-                tasksToSolve.remove(0);
-            }
-        }
-    }
-
-    public ArrayList<String> convertExpressionToList(String expression) {
-        return new ArrayList<String>(Arrays.asList(expression.split(" ")));
-    }
-
-    /* This method traverses the tree structure and returns all task currently ready for solving */
-    public static ArrayList<Task> findSolvableTask(Task root) {
-        ArrayList<Task> solvableTasks = new ArrayList<Task>();
-        if (!Task.isNumeric(root.getValue())) {
-            traverse(root, solvableTasks);
-        }
-        return solvableTasks;
-
-    }
-
-    public static Task traverse(Task root, ArrayList<Task> tasks) {
-       /* if (Task.isNumeric(root.getValue())) {
-            return null;
-        } */
-        if (root.getLeftChild() != null && root.getRightChild() != null) {
-            Task left = traverse(root.getLeftChild(), tasks);
-            Task right = traverse(root.getRightChild(), tasks);
-            if (Task.isNumeric(left.getValue()) && Task.isNumeric(right.getValue())) {
-                tasks.add(root);
-            }
-        }
-        return root;
+        addBehaviour(new ReceiveTaskBehaviour());
     }
 
     private class ReceiveTaskBehaviour extends CyclicBehaviour {
 
         @Override
         public void action() {
-            
+            MessageTemplate messageTemplate = MessageTemplate.MatchPerformative(ACLMessage.QUERY_REF);
+            ACLMessage message = myAgent.receive(messageTemplate);
+            if (message != null) {
+                taskReceived = message; //Store the message so it can receive a reply
+                String content = message.getContent();
+                System.out.println("Expression to solve: "+content);
+                rootNode = Task.parsePrefix(TaskUtils.convertExpressionToList(content));
+                tasksToSolve = TaskUtils.findSolvableTask(rootNode);
+                while (tasksToSolve.size() > 0) {
+
+                    addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(0)));
+                    tasksToSolve.remove(0);
+                }
+            } else {
+                block();
+            }
         }
     }
 
@@ -89,7 +62,7 @@ public class TaskAdministrator extends Agent {
 
         @Override
         public void action() {
-            String type = TaskConverter.getType(task);
+            String type = TaskUtils.getType(task);
             DFAgentDescription template = new DFAgentDescription();
             ServiceDescription serviceDescription = new ServiceDescription();
             serviceDescription.setType(type);
@@ -120,14 +93,14 @@ public class TaskAdministrator extends Agent {
         @Override
         public void action() {
             ACLMessage cfp = new ACLMessage(ACLMessage.CFP);
-            String type = TaskConverter.getType(task);
+            String type = TaskUtils.getType(task);
             AID[] solverAgents = solverAgentMap.get(type);
             for (int i = 0; i < solverAgents.length; i++) {
                 cfp.addReceiver(solverAgents[i]);
             }
-            cfp.setContent(TaskConverter.stringify(task));
+            cfp.setContent(TaskUtils.stringify(task));
             cfp.setConversationId("solveArithmeticTask");
-            cfp.setReplyWith("cfp"+System.currentTimeMillis());
+            cfp.setReplyWith("cfp" + TaskUtils.stringify(task) + ";" + System.currentTimeMillis());
             myAgent.send(cfp);
             myAgent.addBehaviour(new ReceiveBidBehaviour(task, cfp));
         }
@@ -151,7 +124,7 @@ public class TaskAdministrator extends Agent {
             MessageTemplate messageTemplate = MessageTemplate.and(MessageTemplate.MatchConversationId("solveArithmeticTask"),
                     MessageTemplate.MatchInReplyTo(cfp.getReplyWith()));
             ACLMessage reply = myAgent.receive(messageTemplate);
-            String type = TaskConverter.getType(task);
+            String type = TaskUtils.getType(task);
             AID[] solverAgents = solverAgentMap.get(type);
             if (reply != null) {
                 if (reply.getPerformative() == ACLMessage.PROPOSE) {
@@ -162,10 +135,9 @@ public class TaskAdministrator extends Agent {
                     }
                 }
                 replyCounter++;
-                if (replyCounter >= solverAgents.length) {
+                if (solverAgents != null && replyCounter >= solverAgents.length) { //Added to handle already solved tasks
                     myAgent.addBehaviour(new AcceptProposalBehaviour(task, bestBidder));
                 }
-
             } else {
                 block();
             }
@@ -186,9 +158,10 @@ public class TaskAdministrator extends Agent {
         public void action() {
             ACLMessage order = new ACLMessage(ACLMessage.ACCEPT_PROPOSAL);
             order.addReceiver(bestBidder);
-            order.setContent(TaskConverter.stringify(task));
+            order.setContent(TaskUtils.stringify(task));
             order.setConversationId("solveArithmeticTask");
-            order.setReplyWith("order" + System.currentTimeMillis());
+            order.setReplyWith("order"+ TaskUtils.stringify(task) + ";" + System.currentTimeMillis());
+            designatedTasks.add(task);
             myAgent.send(order);
             myAgent.addBehaviour(new ReceiveSolutionBehaviour(task, order));
         }
@@ -212,9 +185,13 @@ public class TaskAdministrator extends Agent {
             if (reply != null) {
                 if (reply.getPerformative() == ACLMessage.INFORM) {
                     task.setValue(reply.getContent());
-                    tasksToSolve = findSolvableTask(rootNode);
+                    tasksToSolve = TaskUtils.findSolvableTask(rootNode);
                     if (tasksToSolve.size() == 0) {
                         System.out.println("Answer is: "+rootNode.getValue());
+                        ACLMessage result = taskReceived.createReply();
+                        result.setPerformative(ACLMessage.INFORM);
+                        result.setContent(rootNode.getValue());
+                        myAgent.send(result);
                     } else {
                         for (int i = 0; i < tasksToSolve.size(); i++) {
                             boolean alreadyAssigned = false;
@@ -222,13 +199,13 @@ public class TaskAdministrator extends Agent {
                                 if (tasksToSolve.get(i).equals(designatedTasks.get(j))) alreadyAssigned = true;
                             }
                             if (!alreadyAssigned) {
-                                //System.out.println("Bottom: taskToSolve: "+TaskConverter.stringify(tasksToSolve.get(i)));
-                                designatedTasks.add(tasksToSolve.get(i));
                                 addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(i)));
                             }
                         }
                     }
                 } else {
+                    /** Agent could not solve the task, we need to remove it from the designated task list, and find another solver agent */
+                    designatedTasks.remove(task);
                     addBehaviour(new FindCapableAgentsBehaviour(task));
                 }
             }

@@ -1,4 +1,4 @@
-package overskaug.agents.solvers;
+package overskaug.agents;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -8,12 +8,15 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import overskaug.agents.solvers.AdditionSolver;
+import overskaug.agents.solvers.ArithmeticSolver;
+import overskaug.agents.solvers.UnsupportedArithmeticOperation;
 import overskaug.tree.Task;
-import overskaug.util.TaskConverter;
+import overskaug.util.TaskUtils;
 
 import java.util.ArrayList;
 
-public class AdditionAgent extends Agent {
+public class ArithmeticAgent extends Agent {
 
     ArrayList<Task> taskList = new ArrayList<Task>();
 
@@ -24,8 +27,15 @@ public class AdditionAgent extends Agent {
         solvers.add(additionSolver);
     }
 
-    protected void setup() {
-        initSolvers();
+    public void addSolver(ArithmeticSolver solver) {
+        this.solvers.add(solver);
+    }
+
+    public ArrayList<ArithmeticSolver> getSolvers() {
+        return this.solvers;
+    }
+
+    public void init() {
         for (ArithmeticSolver solver : solvers) {
             DFAgentDescription dfAgentDescription = new DFAgentDescription();
             dfAgentDescription.setName(getAID());
@@ -42,6 +52,11 @@ public class AdditionAgent extends Agent {
 
         addBehaviour(new ReceiveCFPBehaviour());
         addBehaviour(new PerformTaskBehaviour());
+    }
+
+    protected void setup() {
+        /* empty as this class should not be used directly */
+
     }
 
     protected void takeDown() {
@@ -63,7 +78,7 @@ public class AdditionAgent extends Agent {
                 String content = message.getContent();
                 ACLMessage reply = message.createReply();
 
-                String type = TaskConverter.getType(TaskConverter.parse(content));
+                String type = TaskUtils.getType(TaskUtils.parse(content));
                 boolean capable = false;
                 for (ArithmeticSolver solver : solvers) {
                     if (solver.getClass().getSimpleName().equals(type)) {
@@ -71,7 +86,7 @@ public class AdditionAgent extends Agent {
                     }
                 }
                 if (capable) {
-                    double timeToComplete = taskList.size() * 2 + 2; //1 second per task already queued, and 1 second for the task at hand
+                    double timeToComplete = taskList.size() * 1 + 1; //1 second per task already queued, and 1 second for the task at hand
                     reply.setPerformative(ACLMessage.PROPOSE);
                     reply.setContent(String.valueOf(timeToComplete));
                 } else {
@@ -93,18 +108,18 @@ public class AdditionAgent extends Agent {
             MessageTemplate messageTemplate = MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL);
             ACLMessage message = myAgent.receive(messageTemplate);
             if (message != null) {
-                Task task = TaskConverter.parse(message.getContent());
+                Task task = TaskUtils.parse(message.getContent());
                 taskList.add(task);
                 ACLMessage reply = message.createReply();
                 double result = 0;
                 boolean failed = false;
                 try {
                     for (ArithmeticSolver solver : solvers) {
-                        if (solver.getClass().getSimpleName().equals(TaskConverter.getType(task))) {
+                        if (solver.getClass().getSimpleName().equals(TaskUtils.getType(task))) {
                             result = solver.solve(task);
                         }
                     }
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (UnsupportedArithmeticOperation unsupportedArithmeticOperation) {
@@ -117,6 +132,7 @@ public class AdditionAgent extends Agent {
                     reply.setPerformative(ACLMessage.INFORM);
                     reply.setContent(String.valueOf(result));
                 }
+                taskList.remove(task);
                 myAgent.send(reply);
             }
             else {
