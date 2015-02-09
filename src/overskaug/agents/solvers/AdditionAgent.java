@@ -71,7 +71,7 @@ public class AdditionAgent extends Agent {
                     }
                 }
                 if (capable) {
-                    double timeToComplete = taskList.size() * 1 + 1; //1 second per task already queued, and 1 second for the task at hand
+                    double timeToComplete = taskList.size() * 2 + 2; //1 second per task already queued, and 1 second for the task at hand
                     reply.setPerformative(ACLMessage.PROPOSE);
                     reply.setContent(String.valueOf(timeToComplete));
                 } else {
@@ -104,7 +104,7 @@ public class AdditionAgent extends Agent {
                             result = solver.solve(task);
                         }
                     }
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (UnsupportedArithmeticOperation unsupportedArithmeticOperation) {

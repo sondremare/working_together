@@ -22,6 +22,7 @@ public class TaskAdministrator extends Agent {
     private String expressionToSolve;
     HashMap<String, AID[]> solverAgentMap = new HashMap<String, AID[]>();
     private ArrayList<Task> tasksToSolve;
+    private ArrayList<Task> designatedTasks = new ArrayList<Task>();
     private Task rootNode;
 
     protected void setup() {
@@ -34,7 +35,9 @@ public class TaskAdministrator extends Agent {
             rootNode = Task.parsePrefix(convertExpressionToList(expressionToSolve));
             tasksToSolve = findSolvableTask(rootNode);
             while (tasksToSolve.size() > 0) {
+                System.out.println("Top TasksToSolve: "+TaskConverter.stringify(tasksToSolve.get(0)));
                 addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(0)));
+                designatedTasks.add(tasksToSolve.get(0));
                 tasksToSolve.remove(0);
             }
         }
@@ -55,18 +58,25 @@ public class TaskAdministrator extends Agent {
     }
 
     public static Task traverse(Task root, ArrayList<Task> tasks) {
-        if (Task.isNumeric(root.getValue())) {
+       /* if (Task.isNumeric(root.getValue())) {
             return null;
-        }
+        } */
         if (root.getLeftChild() != null && root.getRightChild() != null) {
             Task left = traverse(root.getLeftChild(), tasks);
             Task right = traverse(root.getRightChild(), tasks);
-            if (left == null && right == null) {
+            if (Task.isNumeric(left.getValue()) && Task.isNumeric(right.getValue())) {
                 tasks.add(root);
-                return root;
             }
         }
-        return null;
+        return root;
+    }
+
+    private class ReceiveTaskBehaviour extends CyclicBehaviour {
+
+        @Override
+        public void action() {
+            
+        }
     }
 
     private class FindCapableAgentsBehaviour extends OneShotBehaviour {
@@ -152,7 +162,6 @@ public class TaskAdministrator extends Agent {
                     }
                 }
                 replyCounter++;
-
                 if (replyCounter >= solverAgents.length) {
                     myAgent.addBehaviour(new AcceptProposalBehaviour(task, bestBidder));
                 }
@@ -179,7 +188,7 @@ public class TaskAdministrator extends Agent {
             order.addReceiver(bestBidder);
             order.setContent(TaskConverter.stringify(task));
             order.setConversationId("solveArithmeticTask");
-            order.setReplyWith("order"+System.currentTimeMillis());
+            order.setReplyWith("order" + System.currentTimeMillis());
             myAgent.send(order);
             myAgent.addBehaviour(new ReceiveSolutionBehaviour(task, order));
         }
@@ -202,19 +211,21 @@ public class TaskAdministrator extends Agent {
             ACLMessage reply = myAgent.receive(messageTemplate);
             if (reply != null) {
                 if (reply.getPerformative() == ACLMessage.INFORM) {
-                    System.out.println(order.getContent() + " solved by " + order.getSender().getName());
                     task.setValue(reply.getContent());
                     tasksToSolve = findSolvableTask(rootNode);
-                    System.out.println("SIZE: "+tasksToSolve.size());
-                    if (tasksToSolve.size() > 0) {
-                        System.out.println("taskToSolve operator: "+tasksToSolve.get(0).getValue());
-                    }
                     if (tasksToSolve.size() == 0) {
-                        System.out.println("COMPLETE");
                         System.out.println("Answer is: "+rootNode.getValue());
                     } else {
                         for (int i = 0; i < tasksToSolve.size(); i++) {
-                            addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(i)));
+                            boolean alreadyAssigned = false;
+                            for (int j = 0; j < designatedTasks.size(); j++) {
+                                if (tasksToSolve.get(i).equals(designatedTasks.get(j))) alreadyAssigned = true;
+                            }
+                            if (!alreadyAssigned) {
+                                //System.out.println("Bottom: taskToSolve: "+TaskConverter.stringify(tasksToSolve.get(i)));
+                                designatedTasks.add(tasksToSolve.get(i));
+                                addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(i)));
+                            }
                         }
                     }
                 } else {
