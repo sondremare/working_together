@@ -6,13 +6,13 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import overskaug.tree.Task;
 
-public class ReceiveSolutionBehaviour extends CyclicBehaviour {
+public class ReceiveSolutionBehaviour2 extends CyclicBehaviour {
 
     private Task task;
     private ACLMessage order;
 
 
-    public ReceiveSolutionBehaviour(Agent myAgent, Task task, ACLMessage order) {
+    public ReceiveSolutionBehaviour2(Agent myAgent, Task task, ACLMessage order) {
         super(myAgent);
         this.task = task;
         this.order = order;

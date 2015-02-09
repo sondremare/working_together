@@ -6,9 +6,8 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import overskaug.tree.Task;
-import sun.plugin2.message.Message;
 
-public class ReceiveBidBehaviour extends CyclicBehaviour {
+public class ReceiveBidBehaviour2 extends CyclicBehaviour {
 
     private Task task;
     private AID[] solverAgents;
@@ -17,7 +16,7 @@ public class ReceiveBidBehaviour extends CyclicBehaviour {
     private int shortestTime;
     private int replyCounter = 0;
 
-    public ReceiveBidBehaviour(Agent myAgent, Task task, AID[] solverAgents, ACLMessage cfp) {
+    public ReceiveBidBehaviour2(Agent myAgent, Task task, AID[] solverAgents, ACLMessage cfp) {
         super(myAgent);
         this.task = task;
         this.solverAgents = solverAgents;
@@ -39,7 +38,7 @@ public class ReceiveBidBehaviour extends CyclicBehaviour {
             }
             replyCounter++;
             if (replyCounter >= solverAgents.length) {
-                myAgent.addBehaviour(new AcceptProposalBehaviour(myAgent, task, bestBidder, reply));
+                myAgent.addBehaviour(new AcceptProposalBehaviour2(myAgent, task, bestBidder, reply));
             }
 
         } else {

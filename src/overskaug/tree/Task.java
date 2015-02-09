@@ -61,7 +61,11 @@ public class Task {
         try {
             int i = Integer.parseInt(element);
         } catch (NumberFormatException nfe) {
-            return false;
+            try {
+                double d = Double.parseDouble(element);
+            } catch (NumberFormatException nf) {
+                return false;
+            }
         }
         return true;
     }

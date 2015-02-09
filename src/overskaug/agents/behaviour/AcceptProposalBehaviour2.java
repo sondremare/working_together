@@ -7,13 +7,13 @@ import jade.lang.acl.ACLMessage;
 import overskaug.tree.Task;
 import overskaug.util.TaskConverter;
 
-public class AcceptProposalBehaviour extends OneShotBehaviour {
+public class AcceptProposalBehaviour2 extends OneShotBehaviour {
 
     private Task task;
     private ACLMessage reply;
     private AID bestBidder;
 
-    public AcceptProposalBehaviour(Agent myAgent, Task task, AID bestBidder, ACLMessage reply) {
+    public AcceptProposalBehaviour2(Agent myAgent, Task task, AID bestBidder, ACLMessage reply) {
         super(myAgent);
         this.task = task;
         this.bestBidder = bestBidder;
@@ -28,6 +28,6 @@ public class AcceptProposalBehaviour extends OneShotBehaviour {
         order.setConversationId("solveArithmeticTask");
         order.setReplyWith("order"+System.currentTimeMillis());
         myAgent.send(order);
-        myAgent.addBehaviour(new ReceiveSolutionBehaviour(myAgent, task, order));
+        myAgent.addBehaviour(new ReceiveSolutionBehaviour2(myAgent, task, order));
     }
 }

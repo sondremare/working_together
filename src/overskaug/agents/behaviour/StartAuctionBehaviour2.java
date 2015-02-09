@@ -2,18 +2,17 @@ package overskaug.agents.behaviour;
 
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import overskaug.tree.Task;
 import overskaug.util.TaskConverter;
 
-public class StartAuctionBehaviour extends OneShotBehaviour {
+public class StartAuctionBehaviour2 extends OneShotBehaviour {
 
     private Task task;
     private AID[] solverAgents;
 
-    public StartAuctionBehaviour(Agent myAgent, Task task, AID[] solverAgents) {
+    public StartAuctionBehaviour2(Agent myAgent, Task task, AID[] solverAgents) {
         super(myAgent);
         this.task = task;
         this.solverAgents = solverAgents;
@@ -29,6 +28,6 @@ public class StartAuctionBehaviour extends OneShotBehaviour {
         cfp.setConversationId("solveArithmeticTask");
         cfp.setReplyWith("cfp"+System.currentTimeMillis());
         myAgent.send(cfp);
-        myAgent.addBehaviour(new ReceiveBidBehaviour(myAgent, task, solverAgents, cfp));
+        myAgent.addBehaviour(new ReceiveBidBehaviour2(myAgent, task, solverAgents, cfp));
     }
 }

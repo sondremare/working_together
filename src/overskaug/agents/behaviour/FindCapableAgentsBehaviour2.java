@@ -10,12 +10,12 @@ import jade.domain.FIPAException;
 import overskaug.tree.Task;
 import overskaug.util.TaskConverter;
 
-public class FindCapableAgentsBehaviour extends OneShotBehaviour {
+public class FindCapableAgentsBehaviour2 extends OneShotBehaviour {
 
     private Task task;
     private AID[] solverAgents;
 
-    public FindCapableAgentsBehaviour(Agent agent, Task task) {
+    public FindCapableAgentsBehaviour2(Agent agent, Task task) {
         super(agent);
         this.task = task;
     }
@@ -40,6 +40,6 @@ public class FindCapableAgentsBehaviour extends OneShotBehaviour {
             e.printStackTrace();
         }
 
-        myAgent.addBehaviour(new StartAuctionBehaviour(myAgent, task, solverAgents));
+        myAgent.addBehaviour(new StartAuctionBehaviour2(myAgent, task, solverAgents));
     }
 }

@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b07c8808-0ccf-497c-be9d-2eab01329d8c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/StartAuctionBehaviour.java" />
-      <change type="DELETED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\agents\behaviour\ProposalBehaviour.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/Main.java" afterPath="$PROJECT_DIR$/src/overskaug/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionSolver.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/agents/solvers/DivisionSolver.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/solvers/DivisionSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/agents/solvers/MultiplicationSolver.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/solvers/MultiplicationSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/agents/solvers/SubtractionSolver.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/solvers/SubtractionSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/tree/Task.java" afterPath="$PROJECT_DIR$/src/overskaug/tree/Task.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\converter\TaskConverter.java" afterPath="$PROJECT_DIR$/src/overskaug/util/TaskConverter.java" />
+      <change type="MOVED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\agents\behaviour\AcceptProposalBehaviour.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour2.java" />
+      <change type="MOVED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\agents\behaviour\FindCapableAgentsBehaviour.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour2.java" />
+      <change type="MOVED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\agents\behaviour\ReceiveBidBehaviour.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour2.java" />
+      <change type="MOVED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\agents\behaviour\ReceiveSolutionBehaviour.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour2.java" />
+      <change type="MOVED" beforePath="D:\Code\School\MAS\jade\working_together\src\overskaug\agents\behaviour\StartAuctionBehaviour.java" afterPath="$PROJECT_DIR$/src/overskaug/agents/behaviour/StartAuctionBehaviour2.java" />
     </list>
     <ignored path="working_together.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,16 +37,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TaskAdministrator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TaskAdministrator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="1496">
-              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.37439615" vertical-offset="2293" max-vertical-offset="3944">
+              <caret line="144" column="47" selection-start-line="144" selection-start-column="33" selection-end-line="144" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#587#602#0" expanded="true" />
-                <element signature="e#2752#2758#0" expanded="true" />
+                <element signature="e#704#719#0" expanded="true" />
+                <element signature="e#1828#1834#0" expanded="true" />
+                <element signature="e#2645#2646#0" expanded="true" />
+                <element signature="e#2685#2686#0" expanded="true" />
+                <element signature="e#3711#3712#0" expanded="true" />
+                <element signature="e#3751#3752#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/tree/Task.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="598" max-vertical-offset="1088">
+              <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,33 +68,22 @@
       <file leaf-file-name="AdditionAgent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="952">
-              <caret line="30" column="46" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="46" />
+            <state vertical-scroll-proportion="-5.32" vertical-offset="751" max-vertical-offset="2278">
+              <caret line="52" column="18" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#370#388#0" expanded="true" />
+                <element signature="e#540#546#0" expanded="true" />
+                <element signature="e#606#624#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReceiveBidBehaviour.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour.java">
+      <file leaf-file-name="ReceiveBidBehaviour2.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="383" max-vertical-offset="935">
-              <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AcceptProposalBehaviour.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="663">
-              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="918">
+              <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReceiveSolutionBehaviour.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour.java">
+      <file leaf-file-name="AcceptProposalBehaviour2.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0172911" vertical-offset="123" max-vertical-offset="663">
-              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="663">
+              <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,55 +103,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartAuctionBehaviour.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/StartAuctionBehaviour.java">
+      <file leaf-file-name="AdditionSolver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="680">
-              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ACLMessage.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/JADE-all-4.3.3/JADE-bin-4.3.3/jade/lib/jade.jar!/jade/domain/introspection/ACLMessage.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="476">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindCapableAgentsBehaviour.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour.java">
+      <file leaf-file-name="DivisionSolver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/DivisionSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="366" max-vertical-offset="867">
-              <caret line="42" column="39" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OneShotBehaviour.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/JADE-all-4.3.3/JADE-bin-4.3.3/jade/lib/jade.jar!/jade/core/behaviours/OneShotBehaviour.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="289">
-              <caret line="7" column="27" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskConverter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/overskaug/util/TaskConverter.java">
+      <file leaf-file-name="MultiplicationSolver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/MultiplicationSolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="612">
-              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubtractionSolver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/SubtractionSolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArithmeticSolver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/ArithmeticSolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -184,15 +185,22 @@
         <option value="$PROJECT_DIR$/src/overskaug/agents/ArithmeticSolver.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/AdditionAgent.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/ArithmeticAgent.java" />
-        <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java" />
         <option value="$PROJECT_DIR$/src/overskaug/Main.java" />
         <option value="$PROJECT_DIR$/src/overskaug/util/TaskConverter.java" />
-        <option value="$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/StartAuctionBehaviour.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour.java" />
         <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour2.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour2.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionSolver.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/DivisionSolver.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/MultiplicationSolver.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/SubtractionSolver.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/tree/Task.java" />
+        <option value="$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java" />
       </list>
     </option>
   </component>
@@ -408,6 +416,11 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -828,7 +841,7 @@
       <changelist id="b07c8808-0ccf-497c-be9d-2eab01329d8c" name="Default" comment="" />
       <created>1423314311611</created>
       <updated>1423314311611</updated>
-      <workItem from="1423314314299" duration="25717000" />
+      <workItem from="1423314314299" duration="32557000" />
     </task>
     <task id="LOCAL-00001" summary="sdfsdfsd">
       <created>1423346978250</created>
@@ -838,11 +851,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25717000" />
+    <option name="totallyTimeSpent" value="32557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -865,7 +878,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17206132" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -934,81 +947,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/SubtractionSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/MultiplicationSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/DivisionSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/UnsupportedArithmeticOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="41" />
-          <folding>
-            <element signature="e#211#212#0" expanded="false" />
-            <element signature="e#241#242#0" expanded="false" />
-            <element signature="e#319#320#0" expanded="false" />
-            <element signature="e#356#357#0" expanded="false" />
-            <element signature="e#418#419#0" expanded="false" />
-            <element signature="e#446#447#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/JADE-all-4.3.3/JADE-bin-4.3.3/jade/lib/jade.jar!/jade/core/Agent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4" vertical-offset="0" max-vertical-offset="6222">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/ArithmeticSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/tree/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1258">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-            <element signature="e#417#418#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#635#636#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#839#840#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,14 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/overskaug/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="89" max-vertical-offset="748">
@@ -1035,37 +970,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#768#774#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="952">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#370#388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/util/TaskConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="612">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="419" max-vertical-offset="1496">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#587#602#0" expanded="true" />
-            <element signature="e#2752#2758#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1086,52 +990,144 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="417" max-vertical-offset="867">
-          <caret line="42" column="39" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="32" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/StartAuctionBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/UnsupportedArithmeticOperation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="680">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/FindCapableAgentsBehaviour2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="377" max-vertical-offset="867">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/StartAuctionBehaviour2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="663">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/util/TaskConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="612">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="918">
+          <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveBidBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="383" max-vertical-offset="935">
-          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="663">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/AcceptProposalBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/ArithmeticSolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="663">
-          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/SubtractionSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/MultiplicationSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/DivisionSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/tree/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="598" max-vertical-offset="1088">
+          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/solvers/AdditionAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.32" vertical-offset="751" max-vertical-offset="2278">
+          <caret line="52" column="18" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#540#546#0" expanded="true" />
+            <element signature="e#606#624#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/behaviour/ReceiveSolutionBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/overskaug/agents/TaskAdministrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0172911" vertical-offset="123" max-vertical-offset="663">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.37439615" vertical-offset="2293" max-vertical-offset="3944">
+          <caret line="144" column="47" selection-start-line="144" selection-start-column="33" selection-end-line="144" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#704#719#0" expanded="true" />
+            <element signature="e#1828#1834#0" expanded="true" />
+            <element signature="e#2645#2646#0" expanded="true" />
+            <element signature="e#2685#2686#0" expanded="true" />
+            <element signature="e#3711#3712#0" expanded="true" />
+            <element signature="e#3751#3752#0" expanded="true" />
           </folding>
         </state>
       </provider>
