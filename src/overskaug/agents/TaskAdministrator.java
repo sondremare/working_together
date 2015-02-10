@@ -34,15 +34,13 @@ public class TaskAdministrator extends Agent {
         @Override
         public void action() {
             MessageTemplate messageTemplate = MessageTemplate.MatchPerformative(ACLMessage.QUERY_REF);
-            ACLMessage message = myAgent.receive();
-            System.out.println("Received message: "+message);
+            ACLMessage message = myAgent.receive(messageTemplate);
             if (message != null) {
                 taskReceived = message; //Store the message so it can receive a reply
                 String content = message.getContent();
                 System.out.println("Expression to solve: "+content);
                 rootNode = Task.parsePrefix(TaskUtils.convertExpressionToList(content));
                 tasksToSolve = TaskUtils.findSolvableTask(rootNode);
-                System.out.println("Tasks to solve: "+tasksToSolve.size());
                 while (tasksToSolve.size() > 0) {
                     addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(0)));
                     tasksToSolve.remove(0);
