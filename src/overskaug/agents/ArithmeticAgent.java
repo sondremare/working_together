@@ -36,18 +36,18 @@ public class ArithmeticAgent extends Agent {
     }
 
     public void init() {
+        DFAgentDescription dfAgentDescription = new DFAgentDescription();
+        dfAgentDescription.setName(getAID());
         for (ArithmeticSolver solver : solvers) {
-            DFAgentDescription dfAgentDescription = new DFAgentDescription();
-            dfAgentDescription.setName(getAID());
             ServiceDescription serviceDescription = new ServiceDescription();
             serviceDescription.setType(solver.getClass().getSimpleName());
             serviceDescription.setName(getClass().getName());
             dfAgentDescription.addServices(serviceDescription);
-            try {
-                DFService.register(this, dfAgentDescription);
-            } catch (FIPAException e) {
-                e.printStackTrace();
-            }
+        }
+        try {
+            DFService.register(this, dfAgentDescription);
+        } catch (FIPAException e) {
+            e.printStackTrace();
         }
 
         addBehaviour(new ReceiveCFPBehaviour());
