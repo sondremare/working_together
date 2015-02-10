@@ -1,7 +1,6 @@
 package overskaug.agents.solvers;
 
 import overskaug.tree.Task;
-import overskaug.util.TaskUtils;
 
 public class AdditionSolver implements ArithmeticSolver {
 

@@ -42,7 +42,6 @@ public class TaskAdministrator extends Agent {
                 rootNode = Task.parsePrefix(TaskUtils.convertExpressionToList(content));
                 tasksToSolve = TaskUtils.findSolvableTask(rootNode);
                 while (tasksToSolve.size() > 0) {
-
                     addBehaviour(new FindCapableAgentsBehaviour(tasksToSolve.get(0)));
                     tasksToSolve.remove(0);
                 }
